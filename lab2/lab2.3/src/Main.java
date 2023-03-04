@@ -1,5 +1,8 @@
 import java.util.Random;
 import java.util.Scanner;
+// Ввести с консоли n – размерность матрицы a[n][n].
+// Задать значения элементов матрицы в интервале значений от -n до n с помощью датчика случайных чисел.
+// Вычислить норму матрицы.
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

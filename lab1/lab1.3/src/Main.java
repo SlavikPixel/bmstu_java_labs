@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
+// Ввести с консоли n целых чисел и поместить их в массив.
+// На консоль вывести: все трехзначные числа, в десятичной записи которых нет одинаковых цифр.
 public class Main {
     public static void main(String[] args) {
 
