@@ -1,40 +1,21 @@
 public class Main {
     public static void main(String[] args) {
-        Bud bud = new Bud("Фиолетовый");
+        Petal petal1 = new Petal();
+        Petal petal2 = new Petal();
+        Petal petal3 = new Petal();
+        Petal petal4 = new Petal();
 
-        Petal petalGreen = new Petal("Зеленый");
-        Petal petalWhite = new Petal("Белый");
-        Petal petalBlack = new Petal("Черный");
+        Petal[] petals = new Petal[4];
+        petals[0] = petal1;
+        petals[1] = petal2;
+        petals[2] = petal3;
+        petals[3] = petal4;
 
-        Petal[] petalPack = new Petal[4];
-        petalPack[0] = petalGreen;
-        petalPack[1] = petalBlack;
-        petalPack[2] = petalWhite;
-        petalPack[3] = petalGreen;
+        Bud bud = new Bud(petals, "Красный");
+        Rose rose = new Rose(bud);
 
-        Rose rose = new Rose(petalPack, bud);
-
-        System.out.println("BUD methods: ");
-        System.out.println(bud.getColor());
-        System.out.println(bud.equals(bud));
-        System.out.println(bud.hashCode());
-        System.out.println(bud.toString());
-
-        System.out.println();
-        System.out.println("PETAL methods: ");
-        System.out.println(petalWhite.getColor());
-        System.out.println(petalWhite.equals(petalBlack));
-        System.out.println(petalWhite.hashCode());
-        System.out.println(petalBlack.hashCode());
-        System.out.println(petalWhite.toString());
-
-        System.out.println();
-        System.out.println("ROSE methods: ");
-        rose.blooming();
+        rose.getColor();
         rose.wilt();
-        rose.getBudColor();
-        System.out.println(rose.equals(rose));
-        System.out.println(rose.hashCode());
-        System.out.println(rose.toString());
+        rose.blooming();
     }
 }

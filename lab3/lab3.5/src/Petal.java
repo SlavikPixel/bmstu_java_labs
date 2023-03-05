@@ -1,29 +1,28 @@
 import java.util.Objects;
 
 public class Petal {
-    private String color;
-    public Petal(String color) {
-        this.color = color;
+    private Boolean isBloom = true;
+    public void wilt() {
+        this.isBloom = false;
+        System.out.println("Лепесток завял");
     }
-    public String getColor() {
-        return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
-    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Petal petal = (Petal) o;
-        return Objects.equals(color, petal.color);
+        if (!(o instanceof Petal petal)) return false;
+        return Objects.equals(isBloom, petal.isBloom);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(color);
+        return Objects.hash(isBloom);
     }
+
     @Override
     public String toString() {
-        return "Petal: { color: " + color + " }";
+        return "Petal{" +
+                "isBloom=" + isBloom +
+                '}';
     }
 }

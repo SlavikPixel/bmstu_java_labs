@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Objects;
 
 // Создать приложение, удовлетворяющее требованиям, приведенным в задании.
@@ -7,57 +6,44 @@ import java.util.Objects;
 // Создать объект класса Роза, используя классы Лепесток, Бутон.
 // Методы: расцвести, завять, вывести на консоль цвет бутона.
 public class Rose {
-    private Petal[] petal;
     private Bud bud;
-    public Rose(Petal[] petal, Bud bud) {
-        this.petal = petal;
+    private Boolean isBloom = true;
+
+    public Rose(Bud bud) {
         this.bud = bud;
     }
     public void blooming() {
+        this.bud.blooming();
+        this.isBloom = true;
         System.out.println("Роза расцвела!");
     }
     public void wilt() {
+        this.bud.wilt();
+        this.isBloom = false;
         System.out.println("Роза завяла");
     }
-    public void getBudColor() {
-        System.out.println("Цвет бутона: " + bud.getColor());
+    public void getColor() {
+        System.out.println("Цвет бутона: " + this.bud.getColor());
     }
 
-    public Petal[] getPetal() {
-        return petal;
-    }
-
-    public void setPetal(Petal[] petal) {
-        this.petal = petal;
-    }
-
-    public Bud getBud() {
-        return bud;
-    }
-    public void setBud(Bud bud) {
-        this.bud = bud;
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
-        Rose rose = (Rose) o;
-        return Objects.equals(petal, rose.petal) &&
-                Objects.equals(bud, rose.bud);
+        if (!(o instanceof Rose rose)) return false;
+        return bud.equals(rose.bud) && isBloom.equals(rose.isBloom);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(petal, bud);
+        return Objects.hash(bud, isBloom);
     }
+
     @Override
     public String toString() {
-        String petalsList = "";
-        for (int i = 0; i < this.petal.length; i++) {
-            petalsList += (this.petal[i].getColor() + ", ");
-        }
-        return "Rose: {" +
-                "petals: " + petalsList +
-                "bud: " + this.bud +
-                " }";
+        return "Rose{" +
+                "bud=" + bud +
+                ", isBloom=" + isBloom +
+                '}';
     }
 }
+
