@@ -23,13 +23,13 @@ public class Main {
         else System.out.println("File already exists");
 
         try {
-            String content = readFile(file.toPath().toString(), StandardCharsets.UTF_8);
-            content = content.replaceAll("\\s+", " ");
-            content = content.replaceAll("(?<!\\w)\\s++|\\s++(?!\\w)", "");
-            content = content.replaceAll("]", "] ");
-            content = content.replaceAll(">", "> ");
+            String content = Files.readString(file.toPath());
+            String clearContent = content
+                    .replaceAll("[\\t ]+", " ")
+                    .replaceAll("\\s*\\(\\s*", "(")
+                    .replaceAll("\\s*\\)\\s*", ")");
             try {
-                Files.writeString(resultFile.toPath(), content, StandardCharsets.UTF_8);
+                Files.writeString(resultFile.toPath(), clearContent, StandardCharsets.UTF_8);
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
@@ -37,11 +37,5 @@ public class Main {
         } catch (IOException e) {
             System.err.println("Ошибка при чтении/записи файла: " + e);
         }
-    }
-
-    public static String readFile(String path, Charset encoding) throws IOException
-    {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
     }
 }
