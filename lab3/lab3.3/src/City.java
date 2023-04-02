@@ -1,8 +1,6 @@
 import java.util.Arrays;
 public class City {
     House[]  houses;
-
-
     public City(House[] houses) {
         this.houses = houses;
     }

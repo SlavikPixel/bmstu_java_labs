@@ -52,7 +52,7 @@ public class Phone {
     }
 
     public void setLastName(String lastName) throws InvalidPhoneDataException {
-        if (lastName.length() < 1) throw new InvalidPhoneDataException("Фамилия слишком короткая");
+        if (lastName.length() < 2) throw new InvalidPhoneDataException("Фамилия слишком короткая");
         this.lastName = lastName;
     }
 

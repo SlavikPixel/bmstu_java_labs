@@ -1,5 +1,5 @@
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidPhoneDataException {
         Phone[] phones = new Phone[9];
 
         phones[0] = new Phone(1, "Vyacheslav", "Gordeev", "Aleksanrovich", "Ramenskoe",
@@ -10,7 +10,7 @@ public class Main {
                 423534, 423, 534, 19, 0);
         phones[3] = new Phone(1, "Russel", "Van Dulken", "Alekseevich", "Moscow",
                 938494, 949, 932, 17, 0);
-        phones[4] = new Phone(1, "Kirill", "Karasiow", "Yanovich", "Moscow",
+        phones[4] = new Phone(1, "Kirill", "", "Yanovich", "Moscow",
                 423949, 432, 926, 2, 15);
         phones[5] = new Phone(1, "Robin", "Kool", "Borisovich", "Bataysk",
                 429394, 932, 238, 32, 0);
@@ -21,6 +21,8 @@ public class Main {
         phones[8] = new Phone(1, "Marcelo", "David", "Alekseevich", "Moscow",
                 150340, 322, 293, 12, 0);
 
+
+        phones[1].setLastName("d");
         DatabasePhones dbPhones = new DatabasePhones(phones);
 
         dbPhones.sortUsers();
